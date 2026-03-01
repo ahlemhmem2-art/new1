@@ -1,0 +1,132 @@
+```html
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>رسالة ليك ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(45deg, #ff6b81, #ffb6c1, #ffc0cb);
+    height: 100vh;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+h1 {
+    margin-top: 100px;
+    font-size: 60px;
+    color: white;
+}
+
+button {
+    position: absolute;
+    font-size: 25px;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#yesBtn {
+    background: #00c853;
+    color: white;
+    left: 45%;
+    top: 50%;
+}
+
+#noBtn {
+    background: #d50000;
+    color: white;
+    left: 55%;
+    top: 50%;
+}
+
+#loveMessage {
+    font-size: 80px;
+    color: white;
+    margin-top: 50px;
+    display: none;
+}
+
+.heart {
+    position: absolute;
+    color: red;
+    font-size: 30px;
+    animation: float 4s linear infinite;
+}
+
+@keyframes float {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-800px);
+        opacity: 0;
+    }
+}
+</style>
+
+</head>
+<body>
+
+<h1>نِتصالحو ؟ 💔</h1>
+
+<button id="yesBtn">Oui</button>
+<button id="noBtn">Non</button>
+
+<div id="loveMessage">نحبك ❤️</div>
+
+<script>
+
+let yesBtn = document.getElementById("yesBtn");
+let noBtn = document.getElementById("noBtn");
+let loveMessage = document.getElementById("loveMessage");
+
+let size = 25;
+
+// زر non يهرب
+noBtn.addEventListener("mouseover", function() {
+    let x = Math.random() * window.innerWidth;
+    let y = Math.random() * window.innerHeight;
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+});
+
+// زر oui يكبر و تظهر القلوب
+yesBtn.addEventListener("click", function() {
+
+    document.querySelector("h1").style.display = "none";
+    yesBtn.style.display = "none";
+    noBtn.style.display = "none";
+
+    loveMessage.style.display = "block";
+
+    setInterval(createHeart, 300);
+});
+
+function createHeart() {
+    let heart = document.createElement("div");
+    heart.innerHTML = "❤️";
+    heart.classList.add("heart");
+
+    heart.style.left = Math.random() * window.innerWidth + "px";
+    heart.style.top = window.innerHeight + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 4000);
+}
+
+</script>
+
+</body>
+</html>
+```
